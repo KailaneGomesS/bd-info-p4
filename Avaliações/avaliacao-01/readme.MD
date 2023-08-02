@@ -5,5 +5,5 @@ Disciplina: *Banco de dados*
 
 Nome: *Kailane Gomes de Sousa*
 
-Período: P4 - Informáica
+Período: *P4 - Informáica*
 
