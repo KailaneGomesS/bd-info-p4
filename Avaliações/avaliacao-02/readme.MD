@@ -1,5 +1,5 @@
 # Avaliação 02
-Avaliação em que se faz necesário evidenciar o repositório da disciplina de Banco de dados. 
+Resolução dos exercícios de números 3, 4, 5, 7, 10, 11, 12 da página 30 do livro Projeto de Banco de Dados.
 
 Disciplina: *Banco de dados*
 
