@@ -1,0 +1,49 @@
+class Pai {
+    var nome: String
+  
+    init(nome: String) {
+        self.nome = nome
+    }
+    
+    
+    func saudacao() -> String {
+        return "Olá, eu sou o pai \(nome)."
+    }
+}
+
+class Filha: Pai {
+    var preferenciasDeFrutas: [String]
+    
+    init(nome: String,  preferenciasDeFrutas: [String]) {
+        self.preferenciasDeFrutas = preferenciasDeFrutas
+        super.init(nome: nome)
+       
+    }
+    
+    override func saudacao() -> String {
+        return "Oi, eu sou a filha \(nome)."
+    }
+    
+    var totalPreferencias: Int {
+        return preferenciasDeFrutas.count
+    }
+    
+    func filtrarPreferencias(_ filtro: (String) -> Bool) -> [String] {
+        return preferenciasDeFrutas.filter(filtro)
+    }
+}
+
+// Exemplo de uso
+let preferenciasDeFrutasDaFilha = ["Maçãs", "Bananas", "Laranjas", "Morangos", "Abacate"]
+let filha = Filha(nome: "Alice",  preferenciasDeFrutas: preferenciasDeFrutasDaFilha)
+
+print(filha.saudacao())
+print("Total de preferências: \(filha.totalPreferencias)")
+
+let filtroFrutasComecandoComA: (String) -> Bool = { preferencia in
+    return preferencia.starts(with: "A")
+}
+
+
+let preferenciasDeFrutasFiltradas = filha.filtrarPreferencias(filtroFrutasComecandoComA)
+print("Preferências filtradas: \(preferenciasDeFrutasFiltradas)")
