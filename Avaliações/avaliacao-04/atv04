@@ -1,49 +1,57 @@
-class Pai {
-    var nome: String
+CREATE TABLE "TB_CURSO"(
+  "id" INTEGER,
+  "nome" TEXT NOT NULL,
+  PRIMARY KEY ("id" AUTOINCREMENT)
+  );
+INSERT INTO TB_CURSO (nome)  
+  VALUES("Informática"),("Edificações"), ("Telecomunicações"), ("Química"), ("Mecânica");
   
-    init(nome: String) {
-        self.nome = nome
-    }
-    
-    
-    func saudacao() -> String {
-        return "Olá, eu sou o pai \(nome)."
-    }
-}
+CREATE TABLE "TB_DISCIPLINA"( 
+  "id" INTEGER,
+  "nome" TEXT NOT NULL,
+  PRIMARY KEY ("id" AUTOINCREMENT)
+  );
+INSERT INTO TB_DISCIPLINA (nome)
+  VALUES ("Matemática"), ("Português"), ("História"), ("Geografia"), ("Química"), ("Programação"),
+("Formação Humana");
 
-class Filha: Pai {
-    var preferenciasDeFrutas: [String]
-    
-    init(nome: String,  preferenciasDeFrutas: [String]) {
-        self.preferenciasDeFrutas = preferenciasDeFrutas
-        super.init(nome: nome)
-       
-    }
-    
-    override func saudacao() -> String {
-        return "Oi, eu sou a filha \(nome)."
-    }
-    
-    var totalPreferencias: Int {
-        return preferenciasDeFrutas.count
-    }
-    
-    func filtrarPreferencias(_ filtro: (String) -> Bool) -> [String] {
-        return preferenciasDeFrutas.filter(filtro)
-    }
-}
-
-// Exemplo de uso
-let preferenciasDeFrutasDaFilha = ["Maçãs", "Bananas", "Laranjas", "Morangos", "Abacate"]
-let filha = Filha(nome: "Alice",  preferenciasDeFrutas: preferenciasDeFrutasDaFilha)
-
-print(filha.saudacao())
-print("Total de preferências: \(filha.totalPreferencias)")
-
-let filtroFrutasComecandoComA: (String) -> Bool = { preferencia in
-    return preferencia.starts(with: "A")
-}
+SELECT * 
+  FROM  TB_DISCIPLINA 
+  WHERE nome like ("G");
 
 
-let preferenciasDeFrutasFiltradas = filha.filtrarPreferencias(filtroFrutasComecandoComA)
-print("Preferências filtradas: \(preferenciasDeFrutasFiltradas)")
+CREATE TABLE "TB_PROFESSOR"(
+  "id" INTEGER,
+  "nome" TEXT NOT NULL,
+  PRIMARY KEY ("id" AUTOINCREMENT)
+  );
+INSERT INTO TB_PROFESSOR (nome)
+  VALUES ("Jânio"), ("Taveira"), ("Roger"), ("Priscila"), ("Fábia"), ("Renata");
+
+DELETE FROM TB_PROFESSOR
+  WHERE id=1;
+
+SELECT *
+  FROM TB_PROFESSOR
+  WHERE id = 1;
+
+SELECT *
+  FROM TB_PROFESSOR
+  WHERE id = 2;
+
+CREATE TABLE "TB_ALUNO"(
+  "id" INTEGER,
+  "nome" TEXT NOT NULL,
+  PRIMARY KEY ("id" AUTOINCREMENT)
+  );
+
+INSERT INTO TB_ALUNO (nome)
+  VALUES ("João"), ("José"), ("Roberto"), ("Kiara"), ("Jurema"), ("Isabell");
+
+UPDATE TB_ALUNO um
+SET nome = 'José Lima'
+WHERE id = 2;
+
+SELECT * 
+FROM TB_ALUNO 
+WHERE id= 2;
